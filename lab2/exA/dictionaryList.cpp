@@ -1,3 +1,11 @@
+/*
+* File Name: dictionaryList.cpp
+* Assignment: Lab 2, Exercise A
+* Lab Section: B01
+* Completed by: Daniel Rey, Aly Farouz
+* Submission Date: Sept 22, 2025
+*/
+
 #include <assert.h>
 #include <iostream>
 #include <stdlib.h>
@@ -126,8 +134,6 @@ void DictionaryList::step_fwd()
     cursorM = cursorM->nextM;
 }
 
-
-
 // The following functions are supposed to be completed by the stuents, as part
 // of the exercise B. the given code for this fucntion are just place-holders
 // in order to allow successful linking when you're esting insert and remove.
@@ -238,7 +244,6 @@ void DictionaryList::make_empty()
   sizeM = 0;
 }
 
-
 ostream& operator << (ostream& os, DictionaryList& dl)
 {
     os << dl.cursor_datum();
@@ -273,3 +278,6 @@ Datum DictionaryList::operator[](int i)const{ //will cause an error if i >= size
     }
     return p->datumM;
 }
+
+
+

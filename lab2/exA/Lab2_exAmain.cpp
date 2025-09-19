@@ -1,5 +1,10 @@
-// Lab2_exAmain.cpp
-// Lab 2 - Exercise A
+/*
+* File Name: Lab2_exAmain.cpp
+* Assignment: Lab 2, Exercise A
+* Lab Section: B01
+* Completed by: Daniel Rey, Aly Farouz
+* Submission Date: Sept 22, 2025
+*/
 
 #include <assert.h>
 #include <iostream>
@@ -243,3 +248,6 @@ void test_operator_overloading(DictionaryList& dl)
     cout << "\n\n***----Finished tests for overloading operators ----------***\n\n";
 }
 #endif
+
+
+

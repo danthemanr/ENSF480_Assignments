@@ -1,5 +1,10 @@
-// dictionaryList.h
-// Lab 1 - Exercise B
+/*
+* File Name: dictionaryList.h
+* Assignment: Lab 2, Exercise A
+* Lab Section: B01
+* Completed by: Daniel Rey, Aly Farouz
+* Submission Date: Sept 22, 2025
+*/
 
 #ifndef DICTIONARY_H
 #define DICTIONARY_H
@@ -18,7 +23,6 @@ using namespace std;
 //    to a particular key/datum pair or is in an "off-list" state, not
 //    attached to any key/datum pair.  If a DictionaryList is empty, the
 //    cursor is automatically in the "off-list" state.
-
 
 // You can edit this typedef to change the datum types, if necessary (it is not necessary
 // for this lab exercise).
@@ -127,3 +131,6 @@ private:
 };
 
 #endif
+
+
+

@@ -1,16 +1,18 @@
 /*
 * File Name: dictionaryList.h
-* Assignment: Lab 2, Exercise A
+* Assignment: Lab 2 Exercise A
 * Lab Section: B01
-* Completed by: Daniel Rey, Aly Farouz
-* Submission Date: Sept 22, 2025
+* Completed by: Aly Farouz, Daniel Rey
+* Submission Date: Sept 11, 2025
 */
+
 
 #ifndef DICTIONARY_H
 #define DICTIONARY_H
 #include <iostream>
 #include <string>
 using namespace std;
+
 
 // class DictionaryList: GENERAL CONCEPTS
 //
@@ -24,10 +26,15 @@ using namespace std;
 //    attached to any key/datum pair.  If a DictionaryList is empty, the
 //    cursor is automatically in the "off-list" state.
 
+
+
+
 // You can edit this typedef to change the datum types, if necessary (it is not necessary
 // for this lab exercise).
 
+
 typedef string Datum;
+
 
 // THE NODE TYPE
 //    In this exercise the node type is a class, that has a ctor.
@@ -35,102 +42,102 @@ typedef string Datum;
 //    is declared as a friend. For details on the friend keyword refer to your
 //    lecture notes.
 
+
 class Node {
-    friend class DictionaryList; // makeing DictionaryList a fried to have access to private data member in a node.
+   friend class DictionaryList; // makeing DictionaryList a fried to have access to private data member in a node.
 private:
-    int keyM;
-    Datum datumM;
-    Node *nextM;
-    
-    // This ctor should be convenient in insert and copy operations.
-    Node(const int& keyA, const Datum& datumA, Node *nextA);
+   int keyM;
+   Datum datumM;
+   Node *nextM;
+  
+   // This ctor should be convenient in insert and copy operations.
+   Node(const int& keyA, const Datum& datumA, Node *nextA);
 };
+
+
+
 
 class DictionaryList {
 public:
-    DictionaryList();
-    DictionaryList(const DictionaryList& source);
-    DictionaryList& operator =(const DictionaryList& rhs);
-    ~DictionaryList();
-    
-    int size() const;
-    // PROMISES: Returns number of keys in the table.
-    
-    int cursor_ok() const;
-    // PROMISES:
-    //   Returns 1 if the cursor is attached to a key/datum pair,
-    //   and 0 if the cursor is in the off-list state.
-    
-    const int& cursor_key() const;
-    // REQUIRES: cursor_ok()
-    // PROMISES: Returns key of key/datum pair to which cursor is attached.
-    
-    Datum& cursor_datum() const; //Note: I removed const from the front because exAmain is trying to edit this
-    // REQUIRES: cursor_ok()
-    // PROMISES: Returns datum of key/datum pair to which cursor is attached.
-    
-    void insert(const int& keyA, const Datum& datumA);
-    // PROMISES:
-    //   If keyA matches a key in the table, the datum for that
-    //   key is set equal to datumA.
-    //   If keyA does not match an existing key, keyA and datumM are
-    //   used to create a new key/datum pair in the table.
-    //   In either case, the cursor goes to the off-list state.
-    
-    void remove(const int& keyA);
-    // PROMISES:
-    //   If keyA matches a key in the table, the corresponding
-    //   key/datum pair is removed from the table.
-    //   If keyA does not match an existing key, the table is unchanged.
-    //   In either case, the cursor goes to the off-list state.
-    
-    void find(const int& keyA);
-    // PROMISES:
-    //   If keyA matches a key in the table, the cursor is attached
-    //   to the corresponding key/datum pair.
-    //   If keyA does not match an existing key, the cursor is put in
-    //   the off-list state.
-    
-    void go_to_first();
-    // PROMISES: If size() > 0, cursor is moved to the first key/datum pair
-    //   in the table.
-    
-    void step_fwd();
-    // REQUIRES: cursor_ok()
-    // PROMISES:
-    //   If cursor is at the last key/datum pair in the list, cursor
-    //   goes to the off-list state.
-    //   Otherwise the cursor moves forward from one pair to the next.
-    
-    void make_empty();
-    // PROMISES: size() == 0.
-    
-    friend ostream& operator << (ostream& os, DictionaryList& dl);
-    //doesn't need to be a friend, but I have to declare it somehwere
-    
-    bool operator !=(const DictionaryList& rhs);
-    bool operator >(const DictionaryList& rhs);
-    bool operator <(const DictionaryList& rhs);
-    bool operator <=(const DictionaryList& rhs);
-    bool operator >=(const DictionaryList& rhs);
-    
-    Datum operator[](int i) const;
-    
+   DictionaryList();
+   DictionaryList(const DictionaryList& source);
+   DictionaryList& operator =(const DictionaryList& rhs);
+   ~DictionaryList();
+  
+   int size() const;
+   // PROMISES: Returns number of keys in the table.
+  
+   int cursor_ok() const;
+   // PROMISES:
+   //   Returns 1 if the cursor is attached to a key/datum pair,
+   //   and 0 if the cursor is in the off-list state.
+  
+   const int& cursor_key() const;
+   // REQUIRES: cursor_ok()
+   // PROMISES: Returns key of key/datum pair to which cursor is attached.
+  
+   Datum& cursor_datum() const;
+   // REQUIRES: cursor_ok()
+   // PROMISES: Returns datum of key/datum pair to which cursor is attached.
+  
+   void insert(const int& keyA, const Datum& datumA);
+   // PROMISES:
+   //   If keyA matches a key in the table, the datum for that
+   //   key is set equal to datumA.
+   //   If keyA does not match an existing key, keyA and datumM are
+   //   used to create a new key/datum pair in the table.
+   //   In either case, the cursor goes to the off-list state.
+  
+   void remove(const int& keyA);
+   // PROMISES:
+   //   If keyA matches a key in the table, the corresponding
+   //   key/datum pair is removed from the table.
+   //   If keyA does not match an existing key, the table is unchanged.
+   //   In either case, the cursor goes to the off-list state.
+  
+   void find(const int& keyA);
+   // PROMISES:
+   //   If keyA matches a key in the table, the cursor is attached
+   //   to the corresponding key/datum pair.
+   //   If keyA does not match an existing key, the cursor is put in
+   //   the off-list state.
+  
+   void go_to_first();
+   // PROMISES: If size() > 0, cursor is moved to the first key/datum pair
+   //   in the table.
+  
+   void step_fwd();
+   // REQUIRES: cursor_ok()
+   // PROMISES:
+   //   If cursor is at the last key/datum pair in the list, cursor
+   //   goes to the off-list state.
+   //   Otherwise the cursor moves forward from one pair to the next.
+  
+   void make_empty();
+   // PROMISES: size() == 0.
+   friend ostream& operator << (ostream& os, DictionaryList& dl);
+   bool operator !=(const DictionaryList& rhs);
+   bool operator >(const DictionaryList& rhs);
+   bool operator <(const DictionaryList& rhs);
+   bool operator <=(const DictionaryList& rhs);
+   bool operator >=(const DictionaryList& rhs);
+   Datum operator[](int i) const;
+
+
+  
 private:
-    int sizeM;
-    Node *headM;    // a pointer that points to the first node in the list. Or is set to zero,
-    Node *cursorM;  // a pointer that can be used to traverse through list. Or set to zero, if not used.
+   int sizeM;
+   Node *headM;    // a pointer that points to the first node in the list. Or is set to zero,
+   Node *cursorM;  // a pointer that can be used to traverse through list. Or set to zero, if not used.
 #if 0
-    void destroy();
-    // REQUIRES: A helper function that deallocate all nodes, set headM to zero.
-    
-    void copy(const DictionaryList& source);
-    // REQUIRES: A helper function to establishe *this as a copy of source.  Cursor of *this will
-    // point to the twin of whatever the source's cursor points to.
+   void destroy();
+   // REQUIRES: A helper function that deallocate all nodes, set headM to zero.
+  
+   void copy(const DictionaryList& source);
+   // REQUIRES: A helper function to establishe *this as a copy of source.  Cursor of *this will
+   // point to the twin of whatever the source's cursor points to.
 #endif
 };
 
+
 #endif
-
-
-

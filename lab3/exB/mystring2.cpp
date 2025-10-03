@@ -123,7 +123,6 @@ int Mystring::operator==(const Mystring& s)const
   return (strcmp(charsM, s.charsM)== 0);
 }
 
-
 int Mystring::operator>(const Mystring& s)const
 {
   return (strcmp(charsM, s.charsM)> 0);

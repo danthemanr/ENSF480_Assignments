@@ -66,30 +66,29 @@ public:
   //           array or sets a new value to  the ith element in
   //           array. 
   
-	void ascending_sort();
+  void ascending_sort();
   // PRIMISES: sorts the vector values in ascending order. 
-	
+  
 private:
   T *array;               // points to the first element of an array of T
   int size;               // size of array
   void swap(T&, T&); // swaps the values of two elements in array
-public:
 };
 
 
 template <class T>
 void Vector<T>::ascending_sort()
 {
-	for(int i=0; i< size-1; i++)
-		for(int j=i+1; j < size; j++)
-			if(array[i] > array[j])
-				swap(array[i], array[j]);
+  for(int i=0; i< size-1; i++)
+    for(int j=i+1; j < size; j++)
+      if(array[i] > array[j])
+        swap(array[i], array[j]);
 }
 template <>
 void Vector<const char*>::ascending_sort()
 {
   for(int i=0; i< size-1; i++)
-		for(int j=i+1; j < size; j++)
+    for(int j=i+1; j < size; j++)
       for(int k=0; 1; k++)
         if (array[i][k]!=array[j][k] || array[i][k]=='\0' || array[j][k]=='\0'){
           if (array[i][k] > array[j][k]){
@@ -102,9 +101,9 @@ void Vector<const char*>::ascending_sort()
 template <class T>
 void Vector<T>::swap(T& a, T& b)
 {
-	T tmp = a;
-	a = b;
-	b = tmp;
+  T tmp = a;
+  a = b;
+  b = tmp;
 }
 
 template <class T>
@@ -186,86 +185,86 @@ T& Vector<T>::operator [] (int i)
 int main()
 {
 
-#if 0
+#if 1
  Vector x(3);
  x[0] = 999;
  x[1] = -77;
  x[2] = 88;
 
- Vector::VectIter iter(x);
+ Vector<int>::VectIter iter(x);
 
  cout << "\n\nThe first element of vector x contains: " << *iter; 
 
  // the code between the  #if 0 and #endif is ignored by
  // compiler. If you change it to #if 1, it will be compiled
 
-	cout << "\nTesting an <int> Vector: " << endl;
-	
-	cout << "\n\nTesting sort";
-	x.ascending_sort();
-	
-	for (int i=0; i<3 ; i++)
-		cout << endl << iter++;
-	
-	cout << "\n\nTesting Prefix --:";
-	for (int i=0; i<3 ; i++)
-		cout << endl << --iter;
-	
-	cout << "\n\nTesting Prefix ++:";
-	for (int i=0; i<3 ; i++)
-		cout << endl << ++iter;	
-	
-	cout << "\n\nTesting Postfix --";
-	for (int i=0; i<3 ; i++)
-		cout << endl << iter--;
-	
-	cout << endl;
+  cout << "\nTesting an <int> Vector: " << endl;
+  
+  cout << "\n\nTesting sort";
+  x.ascending_sort();
+  
+  for (int i=0; i<3 ; i++)
+    cout << endl << iter++;
+  
+  cout << "\n\nTesting Prefix --:";
+  for (int i=0; i<3 ; i++)
+    cout << endl << --iter;
+  
+  cout << "\n\nTesting Prefix ++:";
+  for (int i=0; i<3 ; i++)
+    cout << endl << ++iter;  
+  
+  cout << "\n\nTesting Postfix --";
+  for (int i=0; i<3 ; i++)
+    cout << endl << iter--;
+  
+  cout << endl;
 #endif
 #if 1
-	cout << "Testing a <Mystring> Vector: " << endl;
-	Vector<Mystring> y(3);
-	y[0] = "Bar";
-	y[1] = "Foo";
-	y[2] = "All";;
-	
-	Vector<Mystring>::VectIter iters(y);
-	
-	cout << "\n\nTesting sort";
-	y.ascending_sort();
-	
-	for (int i=0; i<3 ; i++)
-		cout << endl << iters++;
-	
-	cout << "\n\nTesting Prefix --:";
-	for (int i=0; i<3 ; i++)
-		cout << endl << --iters;
-	
-	cout << "\n\nTesting Prefix ++:";
-	for (int i=0; i<3 ; i++)
-		cout << endl << ++iters;
-	
-	cout << "\n\nTesting Postfix --";
-	for (int i=0; i<3 ; i++)
-		cout << endl << iters--;
-	
-	cout << endl; cout << "Testing a <char *> Vector: " << endl;
-	Vector<const char*> z(3);
-	z[0] = "Orange";
-	z[1] = "Pear";
-	z[2] = "Apple";;
-	
-	Vector<const char*>::VectIter iterchar(z);
-	
-	cout << "\n\nTesting sort";//FIXME does not work for this type
-	z.ascending_sort();
-	
-	for (int i=0; i<3 ; i++)
-		cout << endl << iterchar++;
-	
+  cout << "Testing a <Mystring> Vector: " << endl;
+  Vector<Mystring> y(3);
+  y[0] = "Bar";
+  y[1] = "Foo";
+  y[2] = "All";;
+  
+  Vector<Mystring>::VectIter iters(y);
+  
+  cout << "\n\nTesting sort";
+  y.ascending_sort();
+  
+  for (int i=0; i<3 ; i++)
+    cout << endl << iters++;
+  
+  cout << "\n\nTesting Prefix --:";
+  for (int i=0; i<3 ; i++)
+    cout << endl << --iters;
+  
+  cout << "\n\nTesting Prefix ++:";
+  for (int i=0; i<3 ; i++)
+    cout << endl << ++iters;
+  
+  cout << "\n\nTesting Postfix --";
+  for (int i=0; i<3 ; i++)
+    cout << endl << iters--;
+  
+  cout << endl; cout << "Testing a <char *> Vector: " << endl;
+  Vector<const char*> z(3);
+  z[0] = "Orange";
+  z[1] = "Pear";
+  z[2] = "Apple";;
+  
+  Vector<const char*>::VectIter iterchar(z);
+  
+  cout << "\n\nTesting sort";//FIXME does not work for this type
+  z.ascending_sort();
+  
+  for (int i=0; i<3 ; i++)
+    cout << endl << iterchar++;
+  
 #endif
-	cout << "\nProgram Terminated Successfully." << endl;
-	
-	return 0;
+  cout << "\nProgram Terminated Successfully." << endl;
+  
+  return 0;
 }
 
 //g++ -Wall iterator.cpp mystring2.cpp -o exB.exe

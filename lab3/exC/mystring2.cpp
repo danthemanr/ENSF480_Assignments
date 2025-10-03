@@ -14,7 +14,7 @@ Mystring::Mystring()
 }
 
 Mystring::Mystring(const char *s)
-  : lengthM(strlen(s))
+  : lengthM((int)strlen(s))
 {
   charsM = new char[lengthM + 1];
   strcpy(charsM, s);
@@ -78,7 +78,7 @@ Mystring& Mystring::operator =(const Mystring& S)
   if(this == &S)
     return *this;
   delete [] charsM;
-  lengthM = strlen(S.charsM);
+  lengthM = (int) strlen(S.charsM);
   charsM = new char [lengthM+1];
   strcpy(charsM,S.charsM);
   return *this;
@@ -99,32 +99,18 @@ Mystring& Mystring::append(const Mystring& other)
  void Mystring::set_str(char* s)
 {
     delete []charsM;
-    lengthM = strlen(s);
+    lengthM = (int) strlen(s);
     charsM=new char[lengthM+1];
 
     strcpy(charsM, s);
 }
 
-int Mystring::isNotEqual (const Mystring& s)const
+std::ostream& operator <<(std::ostream& os, const Mystring& s)
 {
-  return (strcmp(charsM, s.charsM)!= 0);
-}
-
-int Mystring::isEqual (const Mystring& s)const
-{
-  return (strcmp(charsM, s.charsM)== 0);
+    return os << s.charsM;
 }
 
 
-int Mystring::isGreater (const Mystring& s)const
-{
-  return (strcmp(charsM, s.charsM)> 0);
-}
-
-int Mystring::isLessThan (const Mystring& s)const
-{
-  return (strcmp(charsM, s.charsM)< 0);
-}
 
 
 
